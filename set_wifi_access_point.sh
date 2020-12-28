@@ -19,6 +19,18 @@ sudo echo ""                         >> /etc/NetworkManager/NetworkManager.conf
 sudo echo "[ifupdown]"               >> /etc/NetworkManager/NetworkManager.conf
 sudo echo "managed=false"            >> /etc/NetworkManager/NetworkManager.conf
 
-nmcli dev wifi hotspot ifname wlan0 ssid IronRPI password "test1234"
+# for testing
+# nmcli dev wifi hotspot ifname wlan0 ssid IronRPI password "test1234"
+nmcli con add type wifi ifname wlan0 mode ap con-name IRON_AP ssid IRON_AP
+nmcli con modify IRON_AP 802-11-wireless.band bg
+nmcli con modify IRON_AP 802-11-wireless.channel 1
+nmcli con modify IRON_AP 802-11-wireless-security.key-mgmt wpa-psk
+nmcli con modify IRON_AP 802-11-wireless-security.proto rsn
+nmcli con modify IRON_AP 802-11-wireless-security.group ccmp
+nmcli con modify IRON_AP 802-11-wireless-security.pairwise ccmp
+nmcli con modify IRON_AP 802-11-wireless-security.psk 11223344
+nmcli con modify IRON_AP ipv4.method shared
+nmcli con up IRON_AP
+
 
 
