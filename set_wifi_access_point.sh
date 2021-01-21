@@ -2,6 +2,7 @@
 
 # Install NetworkManager, now it doesn't available on the clean RaspbianOS
 sudo apt-get install network-manager -y
+sudo apt-get install dnsmasq -y
 
 # Disabling standalone dnsmasq service
 # Dnsmasq is a lightweight DNS forwarder and DHCP server.
